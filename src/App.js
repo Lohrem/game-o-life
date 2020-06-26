@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import './App.css';
+import React, { useState, useEffect, useCallback } from 'react'
+import './App.css'
 import produce from 'immer'
 
 const numRows = 35
@@ -36,10 +36,10 @@ function App() {
         Array.from(Array(numCols), () =>
           Math.random() > 0.75 ? 1 : 0
         )
-      );
+      )
     }
 
-    setGrid(rows);
+    setGrid(rows)
   }, [])
   
   console.log('2: ' + grid)
@@ -60,7 +60,7 @@ function App() {
             })
 
             if (neighborCount < 2 || neighborCount > 3) gridCopy[i][j] = 0
-            else if (currGrid[i][j] === 0 && neighborCount === 3) gridCopy[i][j] = 1;
+            else if (currGrid[i][j] === 0 && neighborCount === 3) gridCopy[i][j] = 1
           }
         }
       })
@@ -69,7 +69,7 @@ function App() {
   }, [])
   return (
     <>
-      <div className="App" style={{ display: 'grid', gridTemplateColumns: `repeat(${numCols}, 20px)`}}>
+      <div className="App" style={{ display: 'grid', gridTemplateColumns: `repeat(${numCols}, 20px)`, backgroundColor: 'black'}}>
         {grid.map((rows, i) => 
           rows.map((col, j) => 
             <div 
@@ -81,7 +81,7 @@ function App() {
               setGrid(newGrid)
             }}
             key={`${i}-${j}`}
-            style={{width: 20, height: 20, backgroundColor: grid[i][j] ? 'teal' : undefined,
+            style={{width: 20, height: 20, backgroundColor: grid[i][j] ? `#${(Math.random()*0xFFFFFF<<0).toString(16)}` : undefined,
             border: 'solid 1px black'}} />))}
       </div>
       <button onClick={() => runSim()}>Start</button>
@@ -89,4 +89,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
