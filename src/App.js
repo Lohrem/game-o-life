@@ -35,7 +35,7 @@ function App() {
   runningRef.current = running
 
   const CreateRandomGrid = () => {
-    const rows = [];
+    const rows = []
     for (let i = 0; i < numRows; i++) {
       rows.push(
         Array.from(Array(numCols), () =>
@@ -44,7 +44,10 @@ function App() {
       )
     }
     setGrid(rows)
-  }// Randomly fill in the grid
+  } // Randomly fill in the grid
+  // const [timesRan, setTimesRan] = useState(0)
+  // const timesRanRef = useRef(timesRan)
+  // timesRanRef.current = timesRan
 
   const runSim = useCallback(() => {
     if (!runningRef.current) {
@@ -74,17 +77,10 @@ function App() {
   }, [])
   return (
     <div className='contentHolder'>
-      <div className="App" style={{ display: 'grid', gridTemplateColumns: `repeat(${numCols}, 20px)`, backgroundColor: 'black'}}>
+      <div className="App" style={{ display: 'grid', gridTemplateColumns: `repeat(${numCols}, 20px)`}}>
         {grid.map((rows, i) => 
           rows.map((col, j) => 
-            <div 
-            onLoad={() => {
-              // runSim()
-              const newGrid = produce(grid, gridCopy => {
-                gridCopy[i][j] = grid[i][j] ? 0 : 1
-              })
-              setGrid(newGrid)
-            }}
+            <div
             key={`${i}-${j}`}
             style={{width: 20, height: 20, backgroundColor: grid[i][j] ? `#${(Math.random()*0xFFFFFF<<0).toString(16)}` : undefined,
             border: 'solid 1px black'}} />))}
@@ -97,6 +93,7 @@ function App() {
       }>{running ? 'Stop' : 'Start'}</button>
       <button onClick={() => setGrid(genGrid())}>Clear</button>
       <button onClick={() => CreateRandomGrid()}>Random</button>
+      <p>Current Generation: {}</p>
     </div>
   )
 }
