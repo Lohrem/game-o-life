@@ -91,20 +91,39 @@ function App() {
             }}
             />))}
       </div>
-      <button onClick={() => {
-        setRunning(!running)
-        if (!running) runningRef.current = true
-        runSim()
-        }
-      }>{running ? 'Stop' : 'Start'}</button>
-      <button onClick={() => {
-        setGrid(genGrid())
-        setTimesRan(0)
-        setRunning(!running)
-        if (!running) runningRef.current = true
-      }}>Clear</button>
-      <button onClick={() => CreateRandomGrid()}>Random</button>
-      <p>Current Generation: {timesRan}</p>
+      <div className="buttonHolder">
+        <button onClick={() => {
+          setRunning(!running)
+          if (!running) runningRef.current = true
+          runSim()
+          }
+        }>{running ? 'Stop' : 'Start'}</button>
+        <button onClick={() => {
+          setGrid(genGrid())
+          setTimesRan(0)
+          setRunning(!running)
+          if (!running) runningRef.current = true
+        }}>Clear</button>
+        <button onClick={() => CreateRandomGrid()}>Random</button>
+        <p>Current Generation: {timesRan}</p> <br></br>
+        <form>
+          <p>Change grid size:</p>
+          <input placeholder='x:' name='xValue'></input>
+          <input placeholder='y:' name='yValue'></input>
+          <button>Create</button>          
+        </form>
+        <ul>Rules:
+          <li>
+            1. If the cell has less than two neighbors, it dies from underpopulation and if it has more than three, it dies from overpopulation.
+          </li>
+          <li>
+            2. If a cell has either two or three cells, it lives on to the next generation of cells.
+          </li>
+          <li>
+            3. A dead cell can be brought back to life if it has exactly three live neighbors.
+          </li>
+        </ul>
+      </div>
     </div>
   )
 }

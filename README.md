@@ -13,3 +13,8 @@ Something I would've liked to have added would be for the user to input their na
 
 ## Difficulties
 Most of my headache was caused by having to go back to React Hooks, because when I did my React course I didn't do Hooks, I only did Redux which I had a hard time understanding.
+Also:
+1. Could not get the generations to stop counting after all the cells have died
+2. Could not get user to input size of the grid to work or speed at which the cells form
+3. Did not implement any presets that a user can choose from
+4. A step through button to go generation by generation
