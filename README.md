@@ -10,3 +10,6 @@ at any given time can only be alive or dead, in order for a cell to be either be
 
 ## Extras
 Something I would've liked to have added would be for the user to input their name and from that, the grid would fill in with cells that are alive writing out their name.
+
+## Difficulties
+Most of my headache was caused by having to go back to React Hooks, because when I did my React course I didn't do Hooks, I only did Redux which I had a hard time understanding.
